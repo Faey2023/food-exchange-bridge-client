@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import SocialButton from "../../Components/Shared/SocialButton";
 
 const Registration = () => {
-  const { userRegister, user } = useContext(AuthContext);
+  const { userRegister, user, userProfile } = useContext(AuthContext);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -18,6 +18,10 @@ const Registration = () => {
     userRegister(email, password)
       .then((res) => {
         console.log(res.user);
+        userProfile(name, image).then((response) => {
+          console.log(response);
+          toast.success("User Update successful!!!");
+        });
         toast.success("User created successfully");
       })
       .catch((err) => {
@@ -36,7 +40,10 @@ const Registration = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Create an account
               </h1>
-              <form onSubmit={handleRegister} className="space-y-3 h-3/4 my-auto">
+              <form
+                onSubmit={handleRegister}
+                className="space-y-3 h-3/4 my-auto"
+              >
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 ">
                     Your email

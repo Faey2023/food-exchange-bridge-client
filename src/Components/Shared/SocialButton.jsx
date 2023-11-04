@@ -9,6 +9,7 @@ const SocialButton = () => {
   const handleLogin = (data) => {
     data()
       .then((res) => {
+        console.log(res);
         toast.success("User Created successfully");
       })
       .catch((err) => {

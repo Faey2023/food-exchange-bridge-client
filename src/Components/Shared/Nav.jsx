@@ -1,8 +1,11 @@
 // import Headroom from "react-headroom";
 import { Link } from "react-router-dom";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Nav = () => {
+  const { user, userSignOut } = useContext(AuthContext);
   const navLinks = (
     <>
       <li>
@@ -52,9 +55,15 @@ const Nav = () => {
           <ul className="menu menu-horizontal">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn">
-            Login
-          </Link>
+          {user ? (
+            <button onClick={userSignOut} className="btn">
+              Log Out
+            </button>
+          ) : (
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </>

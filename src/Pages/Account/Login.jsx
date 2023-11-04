@@ -1,6 +1,27 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import SocialButton from "../../Components/Shared/SocialButton";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password)
+      .then((res) => {
+        toast.success("User Logged in successfully");
+        console.log(res);
+      })
+      .catch((error) => {
+        toast.error(error.code);
+      });
+  };
+
   return (
     <>
       <section className="bg-gray-50 mt-5">
@@ -10,7 +31,7 @@ const Login = () => {
               <h1 className="text-xl font-bold text-gray-900 md:text-2xl ">
                 Log in to your account
               </h1>
-              <form className="space-y-4">
+              <form onSubmit={handleLogIn} className="space-y-4">
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900">
                     Your email
@@ -35,23 +56,20 @@ const Login = () => {
                     required
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  className="w-full text-white btn bg-gray-600 hover:bg-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-                >
+                <button className="w-full text-white btn bg-gray-600 hover:bg-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
                   Log in
                 </button>
-                <p className="text-sm font-light text-gray-500 ">
-                  Don&apos;t have an account?{" "}
-                  <Link
-                    to="/registration"
-                    className="font-medium text-primary-600 hover:underline "
-                  >
-                    Register
-                  </Link>
-                </p>
               </form>
+              <SocialButton />
+              <p className="text-sm font-light text-gray-500 ">
+                Don&apos;t have an account?{" "}
+                <Link
+                  to="/registration"
+                  className="font-medium text-primary-600 hover:underline "
+                >
+                  Register
+                </Link>
+              </p>
             </div>
           </div>
         </div>
