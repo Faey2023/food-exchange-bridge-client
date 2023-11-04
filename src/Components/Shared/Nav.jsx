@@ -44,7 +44,7 @@ const Nav = () => {
               alt="logo"
             />
             <span className="text-sm md:text-2xl md:font-semibold">
-              Food Bridge Exchange
+              Food Exchange Bridge
             </span>
           </div>
         </div>

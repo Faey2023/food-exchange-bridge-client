@@ -19,7 +19,7 @@ const Footer = () => {
                 alt="logo"
               />
               <span className="text-2xl font-semibold">
-                Food Bridge Exchange
+                Food Exchange Bridge
               </span>
             </div>
             <div className="flex flex-col">
@@ -73,7 +73,7 @@ const Footer = () => {
           <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2023 {""}
             <Link to="/" className="hover:underline">
-              Food Bridge Exchange™
+              Food Exchange Bridge™
             </Link>
             . All Rights Reserved.
           </span>

@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../Components/Shared/Footer";
 import Nav from "../Components/Shared/Nav";
+import { Toaster } from "react-hot-toast";
 
 const MainPage = () => {
   return (
@@ -8,6 +9,7 @@ const MainPage = () => {
       <Nav />
       <Outlet />
       <Footer />
+      <Toaster/>
     </div>
   );
 };
