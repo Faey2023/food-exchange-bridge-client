@@ -9,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <>
-      <footer className="absolute right-0 left-0 bottom-0 rounded-lg shadow-lg border-2 m-4 ">
+      <footer className="rounded-lg shadow-lg border-2 m-4">
         <div className=" max-w-screen-xl mx-auto p-5 md:py-8 ">
           <div className="sm:flex sm:items-center sm:justify-between">
             <div className="flex items-center mb-4 sm:mb-0">
@@ -84,3 +84,4 @@ const Footer = () => {
 };
 
 export default Footer;
+// absolute right-0 left-0 bottom-0
