@@ -8,9 +8,9 @@ import {
 
 const Footer = () => {
   return (
-    <div className=" justify-between">
-      <footer className="absolute right-0 left-0 bottom-0 bg-white rounded-lg shadow m-4">
-        <div className="max-w-screen-xl mx-auto p-4 md:py-8">
+    <>
+      <footer className="absolute right-0 left-0 bottom-0 rounded-lg shadow-lg border-2 m-4 ">
+        <div className=" max-w-screen-xl mx-auto p-5 md:py-8 ">
           <div className="sm:flex sm:items-center sm:justify-between">
             <div className="flex items-center mb-4 sm:mb-0">
               <img
@@ -69,7 +69,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <hr className="my-6 border-gray-400 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2023 {""}
             <Link to="/" className="hover:underline">
@@ -79,7 +79,7 @@ const Footer = () => {
           </span>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 
