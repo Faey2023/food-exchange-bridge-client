@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { FcViewDetails } from "react-icons/fc";
 const FeaturedFoodCard = ({ food }) => {
   const {
     foodImage,
@@ -47,26 +47,29 @@ const FeaturedFoodCard = ({ food }) => {
                 </p>
               </div>
             </div>
-            <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
-              Note from the Food Sharer:{" "}
-              <span className="italic font-semibold">{note}</span>
-            </p>
-            <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
-              Food Serving:{" "}
-              <span className="text-black font-bold">{foodQuantity}</span>
-            </p>
-            <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
-              Expiry Date:{" "}
-              <span className="text-black font-bold">{expiredDate}</span>
-            </p>
+            <div className="mt-3 h-32">
+              <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
+                Note from the Food Sharer:{" "}
+                <span className="italic font-semibold">{note}</span>
+              </p>
+              <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
+                Food Serving:{" "}
+                <span className="text-black font-bold">{foodQuantity}</span>
+              </p>
+              <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
+                Expiry Date:{" "}
+                <span className="text-black font-bold">{expiredDate}</span>
+              </p>
+            </div>
           </div>
         </div>
         <div className="p-6 pt-3">
           <Link
             to={`/food/${_id}`}
-            className="block w-full select-none rounded-lg bg-cyan-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-cyan-500/20 transition-all hover:shadow-lg hover:shadow-cyan-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="flex w-full select-none btn btn-outline rounded-lg  py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-cyan-800 shadow-md shadow-cyan-500/20 transition-all hover:shadow-lg hover:shadow-cyan-500/40  active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             View Details
+            <FcViewDetails className="text-xl" />
           </Link>
         </div>
       </div>

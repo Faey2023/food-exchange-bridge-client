@@ -15,9 +15,10 @@ const Banner = () => {
         <div className="hero-content text-neutral-content">
           <div className="flex flex-col md:flex-row">
             <div className="flex-1">
-              <h1 className="mb-5 text-7xl font-bold">
-                Together, <br />
-                <span className="text-gray-400">We Share</span>
+              <h1 className="mb-5 text-7xl font-bold italic">
+                Together,
+                <br />
+                <span className="text-gray-400">We share</span>
               </h1>
               <p className="mb-5 text-xl font-semibold">
                 Join our community in reducing food waste and feeding those in

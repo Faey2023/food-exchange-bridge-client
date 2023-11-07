@@ -16,9 +16,11 @@ const MarqueeSection = () => {
   return (
     <>
       <div className="my-5">
-      <h1 className=" text-3xl flex flex-col text-center font-body italic underline text-gray-700 my-5">
-        Our Trusted partners
-      </h1>
+        <h1 className=" text-6xl block text-center font-bold italic text-cyan-700 my-5">
+          Our
+          <span className="text-pink-900"> Trusted</span> Allies in the Fight
+          Against Food Waste
+        </h1>
         <Marquee>
           <div className="flex gap-5">
             {brands.map((brand) => (

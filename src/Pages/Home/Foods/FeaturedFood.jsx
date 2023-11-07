@@ -14,8 +14,9 @@ const FeaturedFood = () => {
   }, []);
   return (
     <>
-      <h1 className=" text-3xl flex flex-col text-center font-body italic underline text-gray-700 my-5">
-        Featured Foods
+      <h1 className=" text-6xl block text-center font-bold italic text-cyan-700 my-5">
+        Showcasing Excess Delights for a
+        <span className="text-pink-900"> Sustainable</span> Community
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {foods.map((food) => (

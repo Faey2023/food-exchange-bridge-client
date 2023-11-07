@@ -1,8 +1,7 @@
 import Banner from "./Banner";
 import FeaturedFood from "./Foods/FeaturedFood";
+import Gallery from "./Gallery/Gallery";
 import MarqueeSection from "./Marquee/MarqueeSection";
-
-// import Phone from "./Phone";
 
 const Home = () => {
   return (
@@ -11,7 +10,9 @@ const Home = () => {
       <Banner />
       {/* featured foods */}
       <FeaturedFood />
-      {/* <Phone /> */}
+      {/* gallery */}
+      <Gallery />
+      {/* trusted partners */}
       <MarqueeSection />
     </div>
   );
