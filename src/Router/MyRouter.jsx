@@ -5,6 +5,7 @@ import Login from "../Pages/Account/Login";
 import Registration from "../Pages/Account/Registration";
 import Home from "../Pages/Home/Home";
 import FoodDetail from "../Pages/Home/Foods/FoodDetail";
+import Available from "../Pages/Home/AvailableFoods.jsx/Available";
 
 const MyRouter = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const MyRouter = createBrowserRouter([
         element: <FoodDetail />,
         loader: ({ params }) =>
           fetch(`https://food-exchange-bridge.vercel.app/foods/${params.id}`),
+      },
+      {
+        path: "/available",
+        element: <Available />,
       },
     ],
   },

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FcViewDetails } from "react-icons/fc";
-const FeaturedFoodCard = ({ food }) => {
+
+const AvailableFoods = ({ food }) => {
   const {
     foodImage,
     foodName,
@@ -21,7 +22,6 @@ const FeaturedFoodCard = ({ food }) => {
           <h5 className="text-3xl font-bold  text-blue-gray-900 text-center mb-2.5">
             {foodName}
           </h5>
-
           <div className="flex flex-col ">
             <div className="flex flex-row border-2 p-3 border-cyan-500">
               <div className="avatar">
@@ -72,4 +72,4 @@ const FeaturedFoodCard = ({ food }) => {
   );
 };
 
-export default FeaturedFoodCard;
+export default AvailableFoods;
