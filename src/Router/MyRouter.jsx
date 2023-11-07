@@ -4,6 +4,7 @@ import ErrorPage from "../Pages/error/ErrorPage";
 import Login from "../Pages/Account/Login";
 import Registration from "../Pages/Account/Registration";
 import Home from "../Pages/Home/Home";
+import FoodDetail from "../Pages/Home/Foods/FoodDetail";
 
 const MyRouter = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const MyRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/food/:id",
+        element: <FoodDetail />,
+        loader:()=>fetch(``)
       },
     ],
   },

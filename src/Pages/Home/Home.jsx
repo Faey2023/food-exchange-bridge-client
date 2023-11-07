@@ -1,11 +1,13 @@
 import Banner from "./Banner";
+import FeaturedFood from "./Foods/FeaturedFood";
 
 const Home = () => {
   return (
     <div>
-      {/* <h1>home</h1> */}
       {/* banner */}
       <Banner />
+      {/* featured foods */}
+      <FeaturedFood />
     </div>
   );
 };
