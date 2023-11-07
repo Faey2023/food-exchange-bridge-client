@@ -13,7 +13,7 @@ const Banner = () => {
       >
         <div className="hero-overlay bg-opacity-80"></div>
         <div className="hero-content text-neutral-content">
-          <div className="flex">
+          <div className="flex flex-col md:flex-row">
             <div className="flex-1">
               <h1 className="mb-5 text-7xl font-bold">
                 Together, <br />

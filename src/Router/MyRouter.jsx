@@ -27,7 +27,8 @@ const MyRouter = createBrowserRouter([
       {
         path: "/food/:id",
         element: <FoodDetail />,
-        loader:()=>fetch(``)
+        loader: ({ params }) =>
+          fetch(`https://food-exchange-bridge.vercel.app/foods/${params.id}`),
       },
     ],
   },
