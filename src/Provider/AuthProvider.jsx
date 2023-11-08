@@ -58,6 +58,7 @@ const AuthProvider = ({ children }) => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      console.log(currentUser);
     });
   }, []);
   //accessing profile information

@@ -11,6 +11,9 @@ const Available = () => {
         setFoods(data);
       });
   }, []);
+
+  //sorting and search
+
   return (
     <>
       <h1 className=" text-6xl block text-center font-bold italic text-cyan-700 my-5">

@@ -2,15 +2,19 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialButton = () => {
   const { googleLogin } = useContext(AuthContext);
+  const currentLoc = useLocation();
+  const destinedLoc = useNavigate();
 
   const handleLogin = (data) => {
     data()
       .then((res) => {
         console.log(res);
         toast.success("User Created successfully");
+        destinedLoc(currentLoc?.state ? currentLoc.state : "/");
       })
       .catch((err) => {
         toast(err.code);

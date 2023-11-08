@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import FoodDetail from "../Pages/Home/Foods/FoodDetail";
 import Available from "../Pages/Home/AvailableFoods.jsx/Available";
 import PrivateRoute from "./PrivateRoute";
+import AddFood from "../Components/Forms/AddFood";
 
 const MyRouter = createBrowserRouter([
   {
@@ -40,10 +41,14 @@ const MyRouter = createBrowserRouter([
         path: "/available",
         element: <Available />,
       },
-      // {
-      //   path: "/addFood",
-      //   element: <PrivateRoute></PrivateRoute>,
-      // },
+      {
+        path: "/addFood",
+        element: (
+          <PrivateRoute>
+            <AddFood />
+          </PrivateRoute>
+        ),
+      },
       // {
       //   path: "/manage",
       //   element: <PrivateRoute></PrivateRoute>,
