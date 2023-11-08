@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import SocialButton from "../../Components/Shared/SocialButton";
 
 const Registration = () => {
   const { userRegister, user, userProfile } = useContext(AuthContext);
+  const currentLoc = useLocation();
+  const destinedLoc = useNavigate();
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -21,6 +23,7 @@ const Registration = () => {
         userProfile(name, image).then((response) => {
           console.log(response);
           toast.success("User Update successful!!!");
+          destinedLoc(currentLoc?.state ? currentLoc.state : "/");
         });
         toast.success("User created successfully");
       })

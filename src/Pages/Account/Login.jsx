@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import SocialButton from "../../Components/Shared/SocialButton";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
+  const currentLoc = useLocation();
+  const destinedLoc = useNavigate();
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const Login = () => {
       .then((res) => {
         toast.success("User Logged in successfully");
         console.log(res);
+        destinedLoc(currentLoc?.state ? currentLoc.state : "/");
       })
       .catch((error) => {
         toast.error(error.code);

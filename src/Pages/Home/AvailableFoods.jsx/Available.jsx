@@ -17,25 +17,27 @@ const Available = () => {
         Discover a Variety of Available
         <span className="text-pink-900"> Surplus</span> Options
       </h1>
-      <div className="join flex flex-row justify-center items-center my-5">
-        <div>
+      <div className="flex flex-row justify-between">
+        <div className="join flex flex-row justify-center items-center my-5">
           <div>
-            <input
-              className="input input-bordered join-item"
-              placeholder="Search"
-            />
+            <div>
+              <input
+                className="input input-bordered join-item"
+                placeholder="Search"
+              />
+            </div>
+          </div>
+          <div className="indicator">
+            <button className="btn join-item">Search</button>
           </div>
         </div>
         <select className="select select-bordered join-item">
           <option disabled selected>
-            Functionality
+            Sort by expiry date
           </option>
-          <option>Sort by expiry date</option>
-          <option>Search by food name</option>
+          <option>Ascending</option>
+          <option>Descending</option>
         </select>
-        <div className="indicator">
-          <button className="btn join-item">Search</button>
-        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {foods.map((food) => (
