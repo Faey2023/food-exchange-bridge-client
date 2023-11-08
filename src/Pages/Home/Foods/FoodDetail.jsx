@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import Modal from "./Modal/Modal";
+import { Helmet } from "react-helmet-async";
 // import Modal from "./Modal";
 
 const FoodDetail = () => {
@@ -15,6 +16,10 @@ const FoodDetail = () => {
     note,
   } = food || {};
   return (
+    <>
+    <Helmet>
+        <title>FEB |Food Detail</title>
+      </Helmet>
     <div className="my-5 card lg:card-side flex flex-col gap-5">
       <figure>
         <img src={foodImage} alt={foodName} />
@@ -40,7 +45,7 @@ const FoodDetail = () => {
           <Modal food={food} />
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

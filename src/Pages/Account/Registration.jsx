@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import SocialButton from "../../Components/Shared/SocialButton";
+import { Helmet } from "react-helmet";
 
 const Registration = () => {
   const { userRegister, user, userProfile } = useContext(AuthContext);
@@ -36,6 +37,9 @@ const Registration = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Food Exchange Bridge |Registration</title>
+      </Helmet>
       <section className="bg-gray-50 mt-5">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
           <div className="w-full h-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">

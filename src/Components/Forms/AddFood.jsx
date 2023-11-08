@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
@@ -50,6 +51,9 @@ const AddFood = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>FEB|Add Food</title>
+      </Helmet>
       <h1 className="capitalize text-4xl block text-center font-bold italic text-cyan-700 my-5">
         Contribute By
         <span className="text-pink-900"> adding Excess </span>
@@ -193,5 +197,3 @@ const AddFood = () => {
 };
 
 export default AddFood;
-
-
