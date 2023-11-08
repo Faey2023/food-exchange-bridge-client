@@ -11,6 +11,7 @@ const AvailableFoods = ({ food, search }) => {
     pickupLocation,
     expiredDate,
     _id,
+    status,
   } = food || {};
   return (
     <div className="flex flex-col justify-center items-center">
@@ -54,6 +55,10 @@ const AvailableFoods = ({ food, search }) => {
               <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
                 Expiry Date:{" "}
                 <span className="text-black font-bold">{expiredDate}</span>
+              </p>
+              <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
+                Status:{" "}
+                <span className="text-green-700 font-bold">{status}</span>
               </p>
             </div>
           </div>

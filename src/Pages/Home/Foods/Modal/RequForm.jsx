@@ -2,17 +2,13 @@ import { useContext } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import moment from "moment";
+import Swal from "sweetalert2";
 
 const RequForm = ({ food }) => {
   const { user } = useContext(AuthContext);
-  const { email } = user;
-  const {
-    foodImage,
-    foodName,
-    donatorName,
-    pickupLocation,
-    donatorEmail,
-  } = food || {};
+  const { email, displayName } = user;
+  const { foodImage, foodName, donatorName, pickupLocation, donatorEmail } =
+    food || {};
   const date = moment().format("D-M-YYYY");
 
   const handleFoodRequest = (e) => {
@@ -23,8 +19,10 @@ const RequForm = ({ food }) => {
     const foodImage = form.food_image.value;
     const donatorName = form.donator_name.value;
     const donatorEmail = form.donator_email.value;
+    const donatedMoney = form.donation.value;
     const pickupLocation = form.pickup_location.value;
     const requesterEmail = form.requester_email.value;
+    const requesterName = form.requester_name.value;
     const requestingDate = form.requesting_date.value;
     const note = form.note.value;
     const requestedFood = {
@@ -32,8 +30,10 @@ const RequForm = ({ food }) => {
       foodImage,
       donatorName,
       donatorEmail,
+      donatedMoney,
       pickupLocation,
       requesterEmail,
+      requesterName,
       requestingDate,
       note,
     };
@@ -48,6 +48,11 @@ const RequForm = ({ food }) => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+    Swal.fire({
+      title: "Thank you for the request",
+      text: "We will reach you soon.",
+      icon: "success",
+    });
   };
 
   return (
@@ -147,16 +152,29 @@ const RequForm = ({ food }) => {
             />
           </div>
         </div>
-        <div className="relative z-0 w-full mb-2 group">
-          <label className="italic text-pink-700">Food Image</label>
-          <input
-            type="text"
-            name="food_image"
-            disabled
-            defaultValue={foodImage}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
-          />
+        <div className="grid md:grid-cols-2 md:gap-6">
+          <div className="relative z-0 w-full mb-2 group">
+            <label className="italic text-pink-700">Food Image</label>
+            <input
+              type="text"
+              name="food_image"
+              disabled
+              defaultValue={foodImage}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
+            />
+          </div>
+          <div className="relative z-0 w-full mb-2 group">
+            <label className="italic text-pink-700">Donation Amount</label>
+            <input
+              type="text"
+              defaultValue={displayName}
+              placeholder="If You want to donate some money."
+              name="requester_name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
+            />
+          </div>
         </div>
+
         <button
           type="submit"
           className="text-white bg-pink-700 rounded-lg text-xl font-semibold w-full px-5 py-2.5 text-center "

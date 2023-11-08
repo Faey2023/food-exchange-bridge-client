@@ -13,7 +13,7 @@ const Available = () => {
       });
   }, []);
 
-  //sorting and search
+  //search
   const handleSearch = (e) => {
     e.preventDefault();
     const searchButton = e.target.search_button.value;
@@ -31,6 +31,8 @@ const Available = () => {
 
     // console.log(searchButton);
   };
+
+  //sorting
 
   return (
     <>

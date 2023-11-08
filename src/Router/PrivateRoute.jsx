@@ -12,7 +12,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return (
       <div className=" w-40 h-40 mx-auto">
-        <Lottie className="w-2/12 mx-auto" animationData={food}></Lottie>
+        <Lottie className="w-52 h-52 mx-auto" animationData={food}></Lottie>
       </div>
     );
   }

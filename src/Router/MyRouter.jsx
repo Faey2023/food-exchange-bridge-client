@@ -5,9 +5,11 @@ import Login from "../Pages/Account/Login";
 import Registration from "../Pages/Account/Registration";
 import Home from "../Pages/Home/Home";
 import FoodDetail from "../Pages/Home/Foods/FoodDetail";
-import Available from "../Pages/Home/AvailableFoods.jsx/Available";
 import PrivateRoute from "./PrivateRoute";
 import AddFood from "../Pages/Home/Forms/AddFood";
+import Available from "../Pages/AvailableFoods.jsx/Available";
+// import Manage from "../Pages/ManageFoods/Manage";
+import Request from "../Pages/Request/Request";
 
 const MyRouter = createBrowserRouter([
   {
@@ -51,12 +53,20 @@ const MyRouter = createBrowserRouter([
       },
       // {
       //   path: "/manage",
-      //   element: <PrivateRoute></PrivateRoute>,
+      //   element: (
+      //     <PrivateRoute>
+      //       <Manage />
+      //     </PrivateRoute>
+      //   ),
       // },
-      // {
-      //   path: "/request",
-      //   element: <PrivateRoute></PrivateRoute>,
-      // },
+      {
+        path: "/request",
+        element: (
+          <PrivateRoute>
+            <Request />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
