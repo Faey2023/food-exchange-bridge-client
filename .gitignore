@@ -7,9 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-RequForm.jsx
-Modal.jsx
-
 node_modules
 dist
 firebase.config.js
