@@ -7,9 +7,16 @@ import Swal from "sweetalert2";
 const RequForm = ({ food }) => {
   const { user } = useContext(AuthContext);
   const { email, displayName } = user;
-  const { foodImage, foodName, donatorName, pickupLocation, donatorEmail } =
-    food || {};
-  const date = moment().format("D-M-YYYY");
+  const {
+    foodImage,
+    foodName,
+    donatorName,
+    pickupLocation,
+    donatorEmail,
+    expiredDate,
+    status,
+  } = food || {};
+  const date = moment().format("YYYY-M-D");
 
   const handleFoodRequest = (e) => {
     e.preventDefault();
@@ -25,6 +32,9 @@ const RequForm = ({ food }) => {
     const requesterName = form.requester_name.value;
     const requestingDate = form.requesting_date.value;
     const note = form.note.value;
+    const status = form.status.value;
+    const expiredDate = form.expired_date.value;
+
     const requestedFood = {
       foodName,
       foodImage,
@@ -36,8 +46,10 @@ const RequForm = ({ food }) => {
       requesterName,
       requestingDate,
       note,
+      expiredDate,
+      status,
     };
-    console.log(requestedFood);
+    // console.log(requestedFood);
 
     fetch("https://food-exchange-bridge.vercel.app/foodRequest", {
       method: "POST",
@@ -57,14 +69,13 @@ const RequForm = ({ food }) => {
 
   return (
     <div>
-      <form method="dialog">
+      <form method="dialog" className="modal-backdrop">
         {/* closing button */}
         <button className="btn btn-sm btn-circle absolute right-2 top-2">
           <AiOutlineClose />
         </button>
       </form>
       <form onSubmit={handleFoodRequest}>
-        <h1 className="text-lg underline">Donator Details</h1>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-2 group">
             <label className="italic text-pink-700">Food Name</label>
@@ -112,7 +123,7 @@ const RequForm = ({ food }) => {
         <h1 className="text-lg underline">Requester Details</h1>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-2 group">
-            <label className="italic text-pink-700">User Email</label>
+            <label className="italic text-pink-700">Requester Email</label>
             <input
               type="text"
               defaultValue={email}
@@ -164,12 +175,34 @@ const RequForm = ({ food }) => {
             />
           </div>
           <div className="relative z-0 w-full mb-2 group">
-            <label className="italic text-pink-700">Donation Amount</label>
+            <label className="italic text-pink-700">User Name</label>
             <input
               type="text"
+              disabled
               defaultValue={displayName}
-              placeholder="If You want to donate some money."
               name="requester_name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
+            />
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 md:gap-6">
+          <div className="relative z-0 w-full mb-2 group">
+            <label className="italic text-pink-700">Expired date</label>
+            <input
+              type="text"
+              name="expired_date"
+              disabled
+              defaultValue={expiredDate}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
+            />
+          </div>
+          <div className="relative z-0 w-full mb-2 group">
+            <label className="italic text-pink-700">User Name</label>
+            <input
+              type="text"
+              disabled
+              defaultValue={status}
+              name="status"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
             />
           </div>
@@ -188,4 +221,11 @@ const RequForm = ({ food }) => {
 
 export default RequForm;
 
-// ○ Request Date(current time not editable)
+// Food Name( Not editable )
+
+// ○ Food Id (Not editable)
+
+// ○ Expire Date(not editable)
+// ○ Additional Notes (editable
+// ○ Donation Money(editable)
+// ○ Request Button

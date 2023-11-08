@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import SocialButton from "../../Components/Shared/SocialButton";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
@@ -15,12 +16,19 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     loginUser(email, password)
       .then((res) => {
         toast.success("User Logged in successfully");
         console.log(res);
-        destinedLoc(currentLoc?.state ? currentLoc.state : "/");
-      })
+        // destinedLoc(currentLoc?.state ? currentLoc.state : "/");
+        const user = { email };
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((data) => {
+            console.log(data.data);
+          });
+      }) 
       .catch((error) => {
         toast.error(error.code);
       });
@@ -28,7 +36,7 @@ const Login = () => {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Food Exchange Bridge |Login</title>
       </Helmet>
       <section className="bg-gray-50 mt-5">
