@@ -7,17 +7,48 @@ const RequForm = ({ food }) => {
   const { user } = useContext(AuthContext);
   const { email } = user;
   const {
-    _id,
     foodImage,
     foodName,
     donatorName,
-    foodQuantity,
     pickupLocation,
-    expiredDate,
-    note,
     donatorEmail,
   } = food || {};
   const date = moment().format("D-M-YYYY");
+
+  const handleFoodRequest = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const foodName = form.food_name.value;
+    const foodImage = form.food_image.value;
+    const donatorName = form.donator_name.value;
+    const donatorEmail = form.donator_email.value;
+    const pickupLocation = form.pickup_location.value;
+    const requesterEmail = form.requester_email.value;
+    const requestingDate = form.requesting_date.value;
+    const note = form.note.value;
+    const requestedFood = {
+      foodName,
+      foodImage,
+      donatorName,
+      donatorEmail,
+      pickupLocation,
+      requesterEmail,
+      requestingDate,
+      note,
+    };
+    console.log(requestedFood);
+
+    fetch("https://food-exchange-bridge.vercel.app/foodRequest", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(requestedFood),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
 
   return (
     <div>
@@ -26,21 +57,15 @@ const RequForm = ({ food }) => {
         <button className="btn btn-sm btn-circle absolute right-2 top-2">
           <AiOutlineClose />
         </button>
-        <div className="flex gap-5">
-          <img src={foodImage} className="avatar w-40 rounded" alt="" />
-          <div>
-            <h3 className="text-pink-700 text-2xl">{foodName}</h3>
-            <p className="text-2xl">Food Id: {_id}</p>
-          </div>
-        </div>
       </form>
-      <form>
+      <form onSubmit={handleFoodRequest}>
         <h1 className="text-lg underline">Donator Details</h1>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-2 group">
             <label className="italic text-pink-700">Food Name</label>
             <input
               type="text"
+              name="food_name"
               defaultValue={foodName}
               disabled
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
@@ -50,6 +75,7 @@ const RequForm = ({ food }) => {
             <label className="italic text-pink-700">Donator Name</label>
             <input
               type="text"
+              name="donator_name"
               defaultValue={donatorName}
               disabled
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
@@ -63,7 +89,7 @@ const RequForm = ({ food }) => {
               type="text"
               defaultValue={donatorEmail}
               disabled
-              placeholder="Your Phone"
+              name="donator_email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
             />
           </div>
@@ -71,6 +97,7 @@ const RequForm = ({ food }) => {
             <label className="italic text-pink-700">Pickup Location</label>
             <input
               type="text"
+              name="pickup_location"
               defaultValue={pickupLocation}
               disabled
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
@@ -85,7 +112,7 @@ const RequForm = ({ food }) => {
               type="text"
               defaultValue={email}
               disabled
-              placeholder="Your Phone"
+              name="requester_email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
             />
           </div>
@@ -93,6 +120,7 @@ const RequForm = ({ food }) => {
             <label className="italic text-pink-700">Requesting Date</label>
             <input
               disabled
+              name="requesting_date"
               defaultValue={date}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
             />
@@ -100,13 +128,12 @@ const RequForm = ({ food }) => {
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-2 group">
-            <label className="italic text-pink-700">
-              Note from the Donator
-            </label>
+            <label className="italic text-pink-700">Additional notes</label>
             <input
               type="text"
-              name="Additional notes"
-              placeholder="Additional notes"
+              name="note"
+              placeholder="Write anything you want to say..."
+              required
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
             />
           </div>
@@ -114,11 +141,21 @@ const RequForm = ({ food }) => {
             <label className="italic text-pink-700">Donation Amount</label>
             <input
               type="number"
-              placeholder="donation"
+              placeholder="If You want to donate some money."
               name="donation"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
             />
           </div>
+        </div>
+        <div className="relative z-0 w-full mb-2 group">
+          <label className="italic text-pink-700">Food Image</label>
+          <input
+            type="text"
+            name="food_image"
+            disabled
+            defaultValue={foodImage}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 h-16"
+          />
         </div>
         <button
           type="submit"

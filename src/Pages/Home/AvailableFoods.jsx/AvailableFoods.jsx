@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FcViewDetails } from "react-icons/fc";
 
-const AvailableFoods = ({ food }) => {
+const AvailableFoods = ({ food, search }) => {
   const {
     foodImage,
     foodName,

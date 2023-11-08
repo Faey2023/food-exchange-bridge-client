@@ -7,7 +7,7 @@ import Home from "../Pages/Home/Home";
 import FoodDetail from "../Pages/Home/Foods/FoodDetail";
 import Available from "../Pages/Home/AvailableFoods.jsx/Available";
 import PrivateRoute from "./PrivateRoute";
-import AddFood from "../Components/Forms/AddFood";
+import AddFood from "../Pages/Home/Forms/AddFood";
 
 const MyRouter = createBrowserRouter([
   {
