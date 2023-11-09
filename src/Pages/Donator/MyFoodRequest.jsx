@@ -2,6 +2,7 @@ import MyFoodRequestRoute from "./MyFoodRequestRoute";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const MyFoodRequest = () => {
   const { user } = useContext(AuthContext);
@@ -17,6 +18,9 @@ const MyFoodRequest = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FEB|My Food Request</title>
+      </Helmet>
       <table className="table table-xs md:table-lg">
         {/* head */}
         <thead>

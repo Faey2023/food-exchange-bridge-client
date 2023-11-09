@@ -8,7 +8,7 @@ const ErrorPage = () => {
   return (
     <div className=" max-h-[100vh]">
       <Helmet>
-        <title>Food Exchange Bridge |Error Page</title>
+        <title>FEB|Error Page</title>
       </Helmet>
       <div className="text-3xl ">
         <Link to="/">

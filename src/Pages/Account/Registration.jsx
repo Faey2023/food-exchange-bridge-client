@@ -38,7 +38,7 @@ const Registration = () => {
   return (
     <>
     <Helmet>
-        <title>Food Exchange Bridge |Registration</title>
+        <title>FEB|Registration</title>
       </Helmet>
       <section className="bg-gray-50 mt-5">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">

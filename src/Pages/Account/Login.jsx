@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Food Exchange Bridge |Login</title>
+        <title>FEB|Login</title>
       </Helmet>
       <section className="bg-gray-50 mt-5">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-[calc(100vh-100px)] lg:py-0">

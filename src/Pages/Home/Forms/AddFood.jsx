@@ -19,7 +19,6 @@ const AddFood = () => {
     const pickupLocation = form.pickup_location.value;
     const expiredDate = form.expired_date.value;
     const note = form.note.value;
-    const status = form.status.value;
 
     const addedFoods = {
       foodName,
