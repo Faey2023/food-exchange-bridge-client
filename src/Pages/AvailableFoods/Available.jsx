@@ -26,20 +26,18 @@ const Available = () => {
       i.foodName.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
     );
     setFilteredData(searchResult);
-
-    // search.preventDefault();
-    // const searchButton = e.target.search_button.value;
-
-    // if (searchButton.length) {
-    //   const searchData = foods?.filter(
-    //     (i) => i.foodName.toLowerCase() == searchButton.toLowerCase()
-    //   );
-    //   if (searchData) {
-    //     setFoods(searchData);
-    //   } else {
-    //     setFoods(foods);
-    //   }
-    // }
+  };
+  const handleSortA = () => {
+    const sortedData = [...foods].sort((a, b) =>
+      a.expiredDate.localeCompare(b.expiredDate)
+    );
+    setFoods(sortedData);
+  };
+  const handleSortD = () => {
+    const sortedData = [...foods].sort((a, b) =>
+      b.expiredDate.localeCompare(a.expiredDate)
+    );
+    setFoods(sortedData);
   };
 
   return (
@@ -70,11 +68,17 @@ const Available = () => {
             </button>
           </div>
         </div>
-        <select >
-          <option className="select select-bordered join-item">
-            Sort by expiry date
-          </option>
-        </select>
+        <div className="join join-vertical">
+          <button onClick={handleSortA} className="btn btn-accent text-white">
+            Sort by expiry date ascending
+          </button>
+          <button
+            onClick={handleSortD}
+            className="btn btn-secondary text-white"
+          >
+            Sort by expiry date descending
+          </button>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {filteredData.map((food) => (

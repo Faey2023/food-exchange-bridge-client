@@ -43,10 +43,6 @@ const Manage = () => {
       }
     });
   };
-  //update
-  const handleUpdate = (id) => {
-    console.log(id);
-  };
 
   //manage
 
@@ -72,7 +68,6 @@ const Manage = () => {
                 key={food._id}
                 food={food}
                 handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
               ></ManageFoods>
             ))}
           </tbody>

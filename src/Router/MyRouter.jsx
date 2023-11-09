@@ -11,6 +11,7 @@ import Manage from "../Pages/ManageFoods/Manage";
 import Request from "../Pages/Request/Request";
 import Available from "../Pages/AvailableFoods/Available";
 import MyFoodRequest from "../Pages/Donator/MyFoodRequest";
+import Form from "../Pages/ManageFoods/Form";
 
 const MyRouter = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const MyRouter = createBrowserRouter([
             <Manage />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/updatefood",
+        element: <Form />,
       },
       {
         path: "/request",
