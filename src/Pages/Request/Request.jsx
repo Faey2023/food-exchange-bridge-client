@@ -10,7 +10,7 @@ const Request = () => {
   const { user } = useContext(AuthContext);
   const [foodRequest, setFoodRequest] = useState([]);
 
-  const url = `http://localhost:5000/request?email=${user.email}`;
+  const url = `https://food-exchange-bridge.vercel.app/request?email=${user.email}`;
 
   useEffect(() => {
     fetch(url)
@@ -32,7 +32,7 @@ const Request = () => {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/foodRequest/${id}`, {
+        fetch(`https://food-exchange-bridge.vercel.app/foodRequest/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

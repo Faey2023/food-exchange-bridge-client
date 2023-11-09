@@ -65,6 +65,21 @@ const RequForm = ({ food }) => {
       text: "We will reach you soon.",
       icon: "success",
     });
+    
+    fetch("http://localhost:5000/myfoodrequest", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(requestedFood),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+    Swal.fire({
+      title: "Thank you for the request",
+      text: "We will reach you soon.",
+      icon: "success",
+    });
   };
 
   return (
@@ -197,7 +212,7 @@ const RequForm = ({ food }) => {
             />
           </div>
           <div className="relative z-0 w-full mb-2 group">
-            <label className="italic text-pink-700">User Name</label>
+            <label className="italic text-pink-700">Status</label>
             <input
               type="text"
               disabled

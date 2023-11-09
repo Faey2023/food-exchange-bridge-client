@@ -20,8 +20,13 @@ const Nav = () => {
       <li>
         <Link to="/manage">Manage My Foods</Link>
       </li>
+      {user && (
+        <li>
+          <Link to="/request">Food Request</Link>
+        </li>
+      )}
       <li>
-        <Link to="/request">My Food Request</Link>
+        <Link to="/myfoodrequest">My Food Request</Link>
       </li>
     </>
   );
@@ -57,11 +62,14 @@ const Nav = () => {
           </div>
           <div className="navbar-end">
             {user ? (
-              <button onClick={userSignOut} className="btn">
+              <button
+                onClick={userSignOut}
+                className="btn btn-outline text-pink-500"
+              >
                 Log Out
               </button>
             ) : (
-              <Link to="/login" className="btn">
+              <Link to="/login" className="btn btn-outline text-cyan-500">
                 Login
               </Link>
             )}

@@ -16,7 +16,7 @@ const ErrorPage = () => {
           Back to Home
         </Link>
       </div>
-      <Lottie style={{ height: "94vh" }} animationData={error} />
+      <Lottie style={{ height: "94vh"}} animationData={error} speed={0.2}/>
     </div>
   );
 };

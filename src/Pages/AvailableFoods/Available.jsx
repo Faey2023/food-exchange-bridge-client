@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import AvailableFoods from "./AvailableFoods";
+
 import { Helmet } from "react-helmet";
+import AvailableFoods from "./AvailableFoods";
 
 const Available = () => {
   const [foods, setFoods] = useState([]);

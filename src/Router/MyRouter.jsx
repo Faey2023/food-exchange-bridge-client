@@ -7,9 +7,10 @@ import Home from "../Pages/Home/Home";
 import FoodDetail from "../Pages/Home/Foods/FoodDetail";
 import PrivateRoute from "./PrivateRoute";
 import AddFood from "../Pages/Home/Forms/AddFood";
-import Available from "../Pages/AvailableFoods.jsx/Available";
 // import Manage from "../Pages/ManageFoods/Manage";
 import Request from "../Pages/Request/Request";
+import Available from "../Pages/AvailableFoods/Available";
+import MyFoodRequest from "../Pages/Donator/MyFoodRequest";
 
 const MyRouter = createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const MyRouter = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Request />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myfoodrequest",
+        element: (
+          <PrivateRoute>
+            <MyFoodRequest />
           </PrivateRoute>
         ),
       },
