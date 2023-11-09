@@ -19,6 +19,7 @@ const AddFood = () => {
     const pickupLocation = form.pickup_location.value;
     const expiredDate = form.expired_date.value;
     const note = form.note.value;
+    const status = form.status.value;
 
     const addedFoods = {
       foodName,
@@ -30,6 +31,7 @@ const AddFood = () => {
       pickupLocation,
       expiredDate,
       note,
+      status: "available",
     };
     console.log(addedFoods);
 
@@ -171,6 +173,7 @@ const AddFood = () => {
             </label>
           </div>
         </div>
+
         <div className="relative z-0 w-full mb-6 group">
           <input
             type="text"
@@ -183,6 +186,7 @@ const AddFood = () => {
             Additional Note
           </label>
         </div>
+
         <div className="flex flex-col justify-center items-center">
           <button
             type="submit"

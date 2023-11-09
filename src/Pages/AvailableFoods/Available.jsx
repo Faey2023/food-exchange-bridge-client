@@ -5,6 +5,12 @@ import AvailableFoods from "./AvailableFoods";
 
 const Available = () => {
   const [foods, setFoods] = useState([]);
+  const [filteredData, setFilteredData] = useState(foods);
+  const [searchValue, setSearchValue] = useState("");
+  console.log(filteredData);
+  useEffect(() => {
+    setFilteredData(foods);
+  }, [foods]);
   const url = "https://food-exchange-bridge.vercel.app/foods";
   useEffect(() => {
     fetch(url)
@@ -13,27 +19,28 @@ const Available = () => {
         setFoods(data);
       });
   }, []);
-
+  console.log(foods);
   //search
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const searchButton = e.target.search_button.value;
+  const handleSearch = (search) => {
+    const searchResult = foods.filter((i) =>
+      i.foodName.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
+    );
+    setFilteredData(searchResult);
 
-    if (searchButton.length) {
-      const searchData = foods?.filter(
-        (i) => i.foodName.toLowerCase() == searchButton.toLowerCase()
-      );
-      if (searchData) {
-        setFoods(searchData);
-      } else {
-        setFoods(foods);
-      }
-    }
+    // search.preventDefault();
+    // const searchButton = e.target.search_button.value;
 
-    // console.log(searchButton);
+    // if (searchButton.length) {
+    //   const searchData = foods?.filter(
+    //     (i) => i.foodName.toLowerCase() == searchButton.toLowerCase()
+    //   );
+    //   if (searchData) {
+    //     setFoods(searchData);
+    //   } else {
+    //     setFoods(foods);
+    //   }
+    // }
   };
-
-  //sorting
 
   return (
     <>
@@ -45,31 +52,32 @@ const Available = () => {
         <span className="text-pink-900"> Surplus</span> Options
       </h1>
       <div className="flex flex-row justify-between">
-        <form
-          onSubmit={handleSearch}
-          className="join flex flex-row justify-center items-center my-5"
-        >
+        <div className="join flex flex-row justify-center items-center my-5">
           <div>
             <input
+              onChange={(e) => setSearchValue(e.target.value)}
               name="search_button"
               className="input input-bordered join-item"
               placeholder="Search"
             />
           </div>
           <div className="indicator">
-            <button className="btn join-item">Search</button>
+            <button
+              onClick={() => handleSearch(searchValue)}
+              className="btn join-item"
+            >
+              Search
+            </button>
           </div>
-        </form>
-        <select className="select select-bordered join-item">
-          <option disabled selected>
+        </div>
+        <select >
+          <option className="select select-bordered join-item">
             Sort by expiry date
           </option>
-          <option>Ascending</option>
-          <option>Descending</option>
         </select>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {foods.map((food) => (
+        {filteredData.map((food) => (
           <AvailableFoods key={food._id} food={food}></AvailableFoods>
         ))}
       </div>

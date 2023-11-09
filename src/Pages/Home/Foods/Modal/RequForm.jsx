@@ -65,8 +65,8 @@ const RequForm = ({ food }) => {
       text: "We will reach you soon.",
       icon: "success",
     });
-    
-    fetch("http://localhost:5000/myfoodrequest", {
+
+    fetch("https://food-exchange-bridge.vercel.app/myfoodrequest", {
       method: "POST",
       headers: {
         "content-type": "application/json",

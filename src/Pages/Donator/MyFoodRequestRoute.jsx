@@ -1,5 +1,3 @@
-// import ShowingData from "./ShowingData";
-
 const MyFoodRequestRoute = ({ food }) => {
   const { requesterEmail, requesterName, requestingDate, status } = food || {};
   console.log(food);
