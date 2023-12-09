@@ -21,7 +21,7 @@ const Login = () => {
       .then((res) => {
         toast.success("User Logged in successfully");
         console.log(res);
-        // destinedLoc(currentLoc?.state ? currentLoc.state : "/");
+        destinedLoc(currentLoc?.state ? currentLoc.state : "/");
         const user = { email };
         axios
           .post("https://food-exchange-bridge.vercel.app/jwt", user, { withCredentials: true })
